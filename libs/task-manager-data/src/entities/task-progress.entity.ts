@@ -36,10 +36,16 @@ export class TaskProgressItem {
   next_status: TaskStatus;
 
   @Column({
-    type: 'datetimeoffset',
-    default: 'UTC_TIMESTAMP()',
+    type: 'timestamp',
+    nullable: false,
   })
-  created_at_utc: Date;
+  created_at: Date;
+
+  @Column({
+    type: 'timestamp',
+    nullable: true,
+  })
+  updated_at: Date;
 
   @ManyToOne(
     () => TaskItem,
